@@ -46,6 +46,17 @@ function install_rocksdb() {
 	fi
 }
 
+function install_ittapi() {
+	# Install Intel Instrumentation and Trace API
+	if [ ! -d /usr/src/ittapi ]; then
+		echo "Cleaning previous version of ittapi"
+		sudo rm -rf /usr/src/ittapi
+	fi
+	git clone "${GIT_REPO_ITTAPI}" "$GIT_REPOS/ittapi"
+	(cd "$GIT_REPOS/ittapi/src/ittnotify_refcol" && make)
+	sudo mv "$GIT_REPOS/ittapi" /usr/src
+}
+
 function install_fio() {
 	# This version of fio is installed in /usr/src/fio to enable
 	# building the spdk fio plugin.
@@ -441,6 +452,7 @@ function install_sources() {
 	fi
 	sources+=(install_fio)
 	sources+=(install_vagrant)
+	sources+=(install_ittapi)
 
 	sudo mkdir -p /usr/{,local}/src
 	sudo mkdir -p "$GIT_REPOS"
@@ -489,6 +501,8 @@ export GIT_REPO_LCOV
 export GIT_REPO_BCC
 : ${GIT_REPO_BPFTRACE=https://github.com/iovisor/bpftrace.git}
 export GIT_REPO_BPFTRACE
+: ${GIT_REPO_ITTAPI=https://github.com/intel/ittapi.git}
+export GIT_REPO_ITTAPI
 
 GIT_REPOS=${GIT_REPOS:-$HOME}
 

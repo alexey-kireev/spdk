@@ -17,7 +17,7 @@ shopt -s extglob
 
 UPGRADE=false
 INSTALL=false
-CONF="rocksdb,fio,flamegraph,tsocks,qemu,libiscsi,nvmecli,qat,spdk,refspdk,vagrant,igb_uio,ice"
+CONF="rocksdb,fio,flamegraph,tsocks,qemu,libiscsi,nvmecli,qat,spdk,refspdk,vagrant,igb_uio,ice,ittapi"
 package_manager=
 
 function pre_install() { :; }

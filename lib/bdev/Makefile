@@ -10,7 +10,7 @@ SO_VER := 12
 SO_MINOR := 0
 
 ifeq ($(CONFIG_VTUNE),y)
-CFLAGS += -I$(CONFIG_VTUNE_DIR)/include -I$(CONFIG_VTUNE_DIR)/sdk/src/ittnotify
+CFLAGS += -I$(CONFIG_VTUNE_DIR)/include -I$(CONFIG_VTUNE_DIR)/src/ittnotify
 endif
 
 C_SRCS = bdev.c bdev_rpc.c bdev_zone.c part.c scsi_nvme.c

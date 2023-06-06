@@ -180,6 +180,8 @@ export SPDK_TEST_XNVME
 export SPDK_TEST_FUZZER_TARGET
 : ${SPDK_TEST_NVMF_MDNS=0}
 export SPDK_TEST_NVMF_MDNS
+: ${SPDK_TEST_VTUNE=0}
+export SPDK_TEST_VTUNE
 
 # always test with SPDK shared objects.
 export SPDK_LIB_DIR="$rootdir/build/lib"
@@ -423,8 +425,8 @@ function get_config_params() {
 		config_params+=" --with-fio=$CONFIG_FIO_SOURCE_DIR"
 	fi
 
-	if [ -d ${DEPENDENCY_DIR}/vtune_codes ]; then
-		config_params+=' --with-vtune='${DEPENDENCY_DIR}'/vtune_codes'
+	if [ -d /usr/src/ittapi ]; then
+		config_params+=' --with-vtune=/usr/src/ittapi'
 	fi
 
 	if [ -d /usr/include/iscsi ]; then
