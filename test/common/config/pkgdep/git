@@ -48,7 +48,7 @@ function install_rocksdb() {
 
 function install_ittapi() {
 	# Install Intel Instrumentation and Trace API
-	if [ ! -d /usr/src/ittapi ]; then
+	if [ -d /usr/src/ittapi ]; then
 		echo "Cleaning previous version of ittapi"
 		sudo rm -rf /usr/src/ittapi
 	fi

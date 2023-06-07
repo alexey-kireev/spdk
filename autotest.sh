@@ -304,8 +304,7 @@ if [ $SPDK_RUN_FUNCTIONAL_TEST -eq 1 ]; then
 	if [ $SPDK_TEST_VTUNE -eq 1 ]; then
 		# WORK HERE
 		# refer to vmd / ublk / 
-		run_test "lvol" $rootdir/test/lvol/lvol.sh
-		run_test "blob_io_wait" $rootdir/test/blobstore/blob_io_wait/blob_io_wait.sh
+		run_test "ittapi_refcol" $rootdir/test/vtune/ittapi.sh
 	fi
 
 	if [ $SPDK_TEST_VHOST_INIT -eq 1 ]; then

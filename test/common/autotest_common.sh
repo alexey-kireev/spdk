@@ -255,6 +255,9 @@ export SPDK_EXAMPLE_DIR="$rootdir/build/examples"
 export QEMU_BIN=${QEMU_BIN:-}
 export VFIO_QEMU_BIN=${VFIO_QEMU_BIN:-}
 
+# For testing VTune/ITTAPI integration
+export VTUNE_ITTAPI_DIR=/usr/src/ittapi
+
 export AR_TOOL=$rootdir/scripts/ar-xnvme-fixer
 
 # For testing nvmes which are attached to some sort of a fanout switch in the CI pool
@@ -425,8 +428,8 @@ function get_config_params() {
 		config_params+=" --with-fio=$CONFIG_FIO_SOURCE_DIR"
 	fi
 
-	if [ -d /usr/src/ittapi ]; then
-		config_params+=' --with-vtune=/usr/src/ittapi'
+	if [ -d $VTUNE_ITTAPI_DIR ]; then
+		config_params+=" --with-vtune=$VTUNE_ITTAPI_DIR"
 	fi
 
 	if [ -d /usr/include/iscsi ]; then
