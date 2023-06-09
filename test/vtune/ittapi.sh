@@ -6,11 +6,13 @@
 testdir=$(readlink -f "$(dirname $0)")
 rootdir=$(readlink -f "$testdir/../..")
 source "$rootdir/test/common/autotest_common.sh"
-source "$rootdir/test/bdev/bdevperf.sh"
+source "$rootdir/test/bdev/bdevperf/common.sh"
 
 function test_run_bdevperf_workload() {
     # set up reference collector environment variables
     export INTEL_LIBITTNOTIFY64=$VTUNE_ITTAPI_DIR/ittnotify_refcol/libittnotify_refcol.so
+    export INTEL_LIBITTNOTIFY_LOG_DIR=$VTUNE_ITTAPI_DIR/ittnotify_refcol
+
 }
 
 function test_parse_itt_refcol_log() {

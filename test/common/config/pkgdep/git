@@ -53,7 +53,7 @@ function install_ittapi() {
 		sudo rm -rf /usr/src/ittapi
 	fi
 	git clone "${GIT_REPO_ITTAPI}" "$GIT_REPOS/ittapi"
-	(cd "$GIT_REPOS/ittapi/src/ittnotify_refcol" && make)
+	(cd "$GIT_REPOS/ittapi/src/ittnotify_refcol" && make >/dev/null)
 	sudo mv "$GIT_REPOS/ittapi" /usr/src
 }
 
