@@ -12,5 +12,9 @@ ifeq ($(OS),Linux)
 SPDK_LIB_LIST += bdev_aio
 endif
 
+ifeq ($(CONFIG_VTUNE),y)
+CFLAGS += -I$(CONFIG_VTUNE_DIR)/include -I$(CONFIG_VTUNE_DIR)/src/ittnotify
+endif
+
 include $(SPDK_ROOT_DIR)/mk/spdk.unittest.mk
 include $(SPDK_ROOT_DIR)/mk/spdk.modules.mk

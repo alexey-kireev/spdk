@@ -84,6 +84,10 @@ BLOCKDEV_MODULES_LIST += bdev_daos
 BLOCKDEV_MODULES_PRIVATE_LIBS += -ldaos -ldaos_common -ldfs -lgurt -luuid -ldl
 endif
 
+ifeq ($(CONFIG_VTUNE),y)
+BLOCKDEV_MODULES_PRIVATE_LIBS += -ldl
+endif
+
 SOCK_MODULES_LIST = sock_posix
 
 ifeq ($(OS), Linux)
